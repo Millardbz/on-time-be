@@ -11,9 +11,14 @@ public class TodoItems : EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
-        app.MapGroup(this)
-            .RequireAuthorization()
-            .MapGet(GetTodoItemsWithPagination)
+        var group = app.MapGroup(this);
+
+        if (!app.Environment.IsDevelopment())
+        {
+            group.RequireAuthorization();
+        }
+
+        group.MapGet(GetTodoItemsWithPagination)
             .MapPost(CreateTodoItem)
             .MapPut(UpdateTodoItem, "{id}")
             .MapPut(UpdateTodoItemDetail, "UpdateDetail/{id}")
