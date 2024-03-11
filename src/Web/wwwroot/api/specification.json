@@ -42,6 +42,15 @@
               "format": "int32"
             },
             "x-position": 3
+          },
+          {
+            "name": "Title",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 4
           }
         ],
         "responses": {
