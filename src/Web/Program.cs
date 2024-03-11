@@ -1,6 +1,11 @@
+using System.Text.Json;
+using Microsoft.AspNetCore.Diagnostics;
+using on_time_be.Application.Common.Exceptions;
 using on_time_be.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.AddConsole();
+
 
 // Add services to the container.
 builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
@@ -52,7 +57,35 @@ app.MapRazorPages();
 
 app.MapFallbackToFile("index.html");
 
-app.UseExceptionHandler(options => { });
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        var exceptionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
+        var exception = exceptionHandlerFeature?.Error;
+
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        logger.LogError(exception, "An unhandled exception has occurred: {Message}", exception?.Message);
+
+        if (exception is ValidationException validationException)
+        {
+            context.Response.StatusCode = StatusCodes.Status400BadRequest;
+            context.Response.ContentType = "application/json";
+            var response = new
+            {
+                error = exception?.Message,
+                details = validationException.Errors
+            };
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+        }
+        else
+        {
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Response.ContentType = "text/plain";
+            await context.Response.WriteAsync("An internal server error has occurred.");
+        }
+    });
+});
 
 app.Map("/", () => Results.Redirect("/api"));
 

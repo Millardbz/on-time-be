@@ -1,17 +1,14 @@
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace on_time_be.WebUI.Controllers
+namespace on_time_be.Web.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public abstract class ApiControllerBase : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public abstract class ApiControllerBase : ControllerBase
-    {
-        private ISender? _mediator; // Mark the field as nullable.
+    private ISender? _mediator; // Mark the field as nullable.
 
-        protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
+    protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
 
-        // Add any common functionality that would be shared across all your controllers here.
-    }
+    // Add any common functionality that would be shared across all your controllers here.
 }
