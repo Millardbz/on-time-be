@@ -9,6 +9,8 @@ public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemB
     public int ListId { get; init; }
     public int PageNumber { get; init; } = 1;
     public int PageSize { get; init; } = 10;
+    
+    public string? Title { get; init; } = null ; 
 }
 
 public class GetTodoItemsWithPaginationQueryHandler : IRequestHandler<GetTodoItemsWithPaginationQuery, PaginatedList<TodoItemBriefDto>>
@@ -24,6 +26,16 @@ public class GetTodoItemsWithPaginationQueryHandler : IRequestHandler<GetTodoIte
 
     public async Task<PaginatedList<TodoItemBriefDto>> Handle(GetTodoItemsWithPaginationQuery request, CancellationToken cancellationToken)
     {
+        if (request.Title is not null)
+        {
+            return await _context.TodoItems
+                .Where(x => x.ListId == request.ListId)
+                .Where(x => x.Title != null && x.Title.Contains(request.Title))
+                .OrderBy(x => x.Title)
+                .ProjectTo<TodoItemBriefDto>(_mapper.ConfigurationProvider)
+                .PaginatedListAsync(request.PageNumber, request.PageSize);
+        }
+        
         return await _context.TodoItems
             .Where(x => x.ListId == request.ListId)
             .OrderBy(x => x.Title)

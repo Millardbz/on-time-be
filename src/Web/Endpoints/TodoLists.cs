@@ -9,8 +9,16 @@ public class TodoLists : EndpointGroupBase
 {
     public override void Map(WebApplication app)
     {
+
+        var group = app.MapGroup(this);
+
+        if (!app.Environment.IsDevelopment())
+        {
+            group.RequireAuthorization();
+        }
+        
         app.MapGroup(this)
-            .RequireAuthorization()
+            // .RequireAuthorization()
             .MapGet(GetTodoLists)
             .MapPost(CreateTodoList)
             .MapPut(UpdateTodoList, "{id}")

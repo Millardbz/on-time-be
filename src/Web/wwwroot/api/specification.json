@@ -42,6 +42,15 @@
               "format": "int32"
             },
             "x-position": 3
+          },
+          {
+            "name": "Title",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 4
           }
         ],
         "responses": {
@@ -55,12 +64,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -91,12 +95,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/TodoItems/{id}": {
@@ -133,12 +132,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -161,12 +155,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/TodoItems/UpdateDetail/{id}": {
@@ -203,12 +192,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/TodoLists": {
@@ -228,12 +212,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "post": {
         "tags": [
@@ -264,12 +243,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/TodoLists/{id}": {
@@ -306,12 +280,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -334,12 +303,7 @@
           "200": {
             "description": ""
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/Users/register": {
@@ -746,12 +710,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     }
   },

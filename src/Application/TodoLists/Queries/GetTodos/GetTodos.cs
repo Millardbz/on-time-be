@@ -5,7 +5,7 @@ using on_time_be.Domain.Enums;
 
 namespace on_time_be.Application.TodoLists.Queries.GetTodos;
 
-[Authorize]
+// [Authorize]
 public record GetTodosQuery : IRequest<TodosVm>;
 
 public class GetTodosQueryHandler : IRequestHandler<GetTodosQuery, TodosVm>

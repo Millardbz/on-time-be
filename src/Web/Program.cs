@@ -8,12 +8,24 @@ builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebServices();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowFrontendLocalhost3000",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
+    app.UseCors("AllowFrontendLocalhost3000"); 
     await app.InitialiseDatabaseAsync();
 }
 else
