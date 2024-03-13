@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using on_time_be.Infrastructure;
 
 namespace on_time_be.Application.FunctionalTests;
 

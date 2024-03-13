@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using on_time_be.Infrastructure;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

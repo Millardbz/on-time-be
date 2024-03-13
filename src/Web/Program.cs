@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Diagnostics;
 using on_time_be.Application.Common.Exceptions;
+using on_time_be.Infrastructure;
 using on_time_be.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -3,6 +3,7 @@ using on_time_be.Infrastructure.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using on_time_be.Infrastructure;
 using Respawn;
 
 namespace on_time_be.Application.FunctionalTests;

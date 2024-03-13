@@ -1,22 +1,23 @@
 ﻿using on_time_be.Application.Common.Behaviours;
 using on_time_be.Application.Common.Interfaces;
-using on_time_be.Application.TodoItems.Commands.CreateTodoItem;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
+using on_time_be.Application.Commands.Salon;
+using on_time_be.Domain.Enums;
 
 namespace on_time_be.Application.UnitTests.Common.Behaviours;
 
 public class RequestLoggerTests
 {
-    private Mock<ILogger<CreateTodoItemCommand>> _logger = null!;
+    private Mock<ILogger<CreateSalonCommand>> _logger = null!;
     private Mock<IUser> _user = null!;
     private Mock<IIdentityService> _identityService = null!;
 
     [SetUp]
     public void Setup()
     {
-        _logger = new Mock<ILogger<CreateTodoItemCommand>>();
+        _logger = new Mock<ILogger<CreateSalonCommand>>();
         _user = new Mock<IUser>();
         _identityService = new Mock<IIdentityService>();
     }
@@ -26,9 +27,9 @@ public class RequestLoggerTests
     {
         _user.Setup(x => x.Id).Returns(Guid.NewGuid().ToString());
 
-        var requestLogger = new LoggingBehaviour<CreateTodoItemCommand>(_logger.Object, _user.Object, _identityService.Object);
+        var requestLogger = new LoggingBehaviour<CreateSalonCommand>(_logger.Object, _user.Object, _identityService.Object);
 
-        await requestLogger.Process(new CreateTodoItemCommand { ListId = 1, Title = "title" }, new CancellationToken());
+        await requestLogger.Process(new CreateSalonCommand { Id = new Guid(), Description = "Test description", Location = "Copenhagen", Name = "Klip 37", ContactInformation = "12345678", DepositType = DepositType.Fixed, DepositValue = 50}, new CancellationToken());
 
         _identityService.Verify(i => i.GetUserNameAsync(It.IsAny<string>()), Times.Once);
     }
@@ -36,9 +37,9 @@ public class RequestLoggerTests
     [Test]
     public async Task ShouldNotCallGetUserNameAsyncOnceIfUnauthenticated()
     {
-        var requestLogger = new LoggingBehaviour<CreateTodoItemCommand>(_logger.Object, _user.Object, _identityService.Object);
+        var requestLogger = new LoggingBehaviour<CreateSalonCommand>(_logger.Object, _user.Object, _identityService.Object);
 
-        await requestLogger.Process(new CreateTodoItemCommand { ListId = 1, Title = "title" }, new CancellationToken());
+        await requestLogger.Process(new CreateSalonCommand { Id = new Guid(), Description = "Test description", Location = "Copenhagen", Name = "Klip 37", ContactInformation = "12345678", DepositType = DepositType.Fixed, DepositValue = 50}, new CancellationToken());
 
         _identityService.Verify(i => i.GetUserNameAsync(It.IsAny<string>()), Times.Never);
     }

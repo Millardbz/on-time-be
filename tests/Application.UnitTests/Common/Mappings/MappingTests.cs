@@ -2,11 +2,9 @@
 using System.Runtime.CompilerServices;
 using AutoMapper;
 using on_time_be.Application.Common.Interfaces;
-using on_time_be.Application.Common.Models;
-using on_time_be.Application.TodoItems.Queries.GetTodoItemsWithPagination;
-using on_time_be.Application.TodoLists.Queries.GetTodos;
-using on_time_be.Domain.Entities;
 using NUnit.Framework;
+using on_time_be.Domain.DTOs;
+using on_time_be.Domain.Entities;
 
 namespace on_time_be.Application.UnitTests.Common.Mappings;
 
@@ -30,11 +28,11 @@ public class MappingTests
     }
 
     [Test]
-    [TestCase(typeof(TodoList), typeof(TodoListDto))]
-    [TestCase(typeof(TodoItem), typeof(TodoItemDto))]
-    [TestCase(typeof(TodoList), typeof(LookupDto))]
-    [TestCase(typeof(TodoItem), typeof(LookupDto))]
-    [TestCase(typeof(TodoItem), typeof(TodoItemBriefDto))]
+    [TestCase(typeof(Salon), typeof(SalonDto))]
+    [TestCase(typeof(User), typeof(UserDto))]
+    [TestCase(typeof(Appointment), typeof(AppointmentDto))]
+    [TestCase(typeof(Service), typeof(ServiceDto))]
+    [TestCase(typeof(Payment), typeof(PaymentDto))]
     public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
     {
         var instance = GetInstanceOf(source);
