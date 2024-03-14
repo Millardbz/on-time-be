@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using on_time_be.Application.Common.Exceptions;
 using on_time_be.Infrastructure;
 using on_time_be.Infrastructure.Data;
+using on_time_be.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();

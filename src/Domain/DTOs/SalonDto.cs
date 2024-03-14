@@ -27,7 +27,7 @@ namespace on_time_be.Domain.DTOs
         }
 
         // Existing constructor that takes all the required parameters
-        public SalonDto(Guid id, Guid ownerId, string name, string description, string location, string contactInformation, string openingHours, bool depositEnabled, DepositType depositType, decimal depositValue, decimal priceWithDeposit, decimal priceWithoutDeposit, DateTime createdAt, DateTime updatedAt)
+        public SalonDto(Guid id, Guid ownerId, string name, string description, string location, string contactInformation, string openingHours, DepositType depositType, decimal depositValue, decimal priceWithDeposit, decimal priceWithoutDeposit, DateTime createdAt, DateTime updatedAt)
         {
             Id = id;
             OwnerId = ownerId;

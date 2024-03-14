@@ -8,4 +8,5 @@ public record ServiceDto(
     TimeSpan Duration,
     decimal Price,
     DateTime CreatedAt,
-    DateTime UpdatedAt);
+    DateTime UpdatedAt,
+    Guid UserId);

@@ -28,6 +28,8 @@ namespace on_time_be.Domain.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime UpdatedAt { get; set; }
+
+        public ICollection<Service> ServiceList { get; set; } = new List<Service>();
         
         private readonly List<BaseEvent> _domainEvents = new List<BaseEvent>();
         public IReadOnlyCollection<BaseEvent> DomainEvents => _domainEvents.AsReadOnly();

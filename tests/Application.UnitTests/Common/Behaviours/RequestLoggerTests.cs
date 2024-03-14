@@ -29,7 +29,7 @@ public class RequestLoggerTests
 
         var requestLogger = new LoggingBehaviour<CreateSalonCommand>(_logger.Object, _user.Object, _identityService.Object);
 
-        await requestLogger.Process(new CreateSalonCommand { Id = new Guid(), Description = "Test description", Location = "Copenhagen", Name = "Klip 37", ContactInformation = "12345678", DepositType = DepositType.Fixed, DepositValue = 50}, new CancellationToken());
+        await requestLogger.Process(new CreateSalonCommand("Test description", "Copenhagen", "Klip 37", "12345678", "10-18"), new CancellationToken());
 
         _identityService.Verify(i => i.GetUserNameAsync(It.IsAny<string>()), Times.Once);
     }
@@ -39,7 +39,7 @@ public class RequestLoggerTests
     {
         var requestLogger = new LoggingBehaviour<CreateSalonCommand>(_logger.Object, _user.Object, _identityService.Object);
 
-        await requestLogger.Process(new CreateSalonCommand { Id = new Guid(), Description = "Test description", Location = "Copenhagen", Name = "Klip 37", ContactInformation = "12345678", DepositType = DepositType.Fixed, DepositValue = 50}, new CancellationToken());
+        await requestLogger.Process(new CreateSalonCommand("Test description", "Copenhagen", "Klip 37", "12345678", "10-18"), new CancellationToken());
 
         _identityService.Verify(i => i.GetUserNameAsync(It.IsAny<string>()), Times.Never);
     }

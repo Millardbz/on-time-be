@@ -29,6 +29,9 @@ namespace on_time_be.Domain.Entities
 
         public DateTime UpdatedAt { get; set; }
         
+        public Guid? UserId { get; set; }
+        public User? User { get; set; }
+        
         private readonly List<BaseEvent> _domainEvents = new List<BaseEvent>();
         public IReadOnlyCollection<BaseEvent> DomainEvents => _domainEvents.AsReadOnly();
 
