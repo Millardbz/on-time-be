@@ -8,8 +8,8 @@ public record PaymentDto(
     long amount,
     string currency,
     PaymentStatus status,
-    DateTime created,
-    DateTime updated,
+    DateTime createdAt,
+    DateTime updatedAt,
     string? paymentMethod,
     string? stripeCustomerId,
     string? metadata)
@@ -21,8 +21,8 @@ public record PaymentDto(
     public long Amount { get; init; } = amount;
     public string Currency { get; init; } = currency;
     public PaymentStatus Status { get; init; } = status;
-    public DateTime Created { get; init; } = created;
-    public DateTime Updated { get; init; } = updated;
+    public DateTime CreatedAt { get; init; } = createdAt;
+    public DateTime UpdatedAt { get; init; } = updatedAt;
     public string? PaymentMethod { get; init; } = paymentMethod;
     public string? StripeCustomerId { get; init; } = stripeCustomerId;
     public string? Metadata { get; init; } = metadata;

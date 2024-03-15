@@ -1,12 +1,13 @@
 using on_time_be.Application.Common.Interfaces;
-using on_time_be.Domain.Entities;
 using on_time_be.Domain.Enums;
 using on_time_be.Domain.Events.User;
+
+namespace on_time_be.Application.Commands.User;
 
 public record CreateUserCommand : IRequest<Guid>
 {
     public Guid Id { get; init; }
-    public Guid SalonId { get; init; }
+    public Guid CustomerId { get; init; }
     public string Name { get; init; } = string.Empty;
     public string Email { get; init; } = string.Empty;
 
@@ -26,7 +27,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
 
     public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var entity = new User(request.Id, request.Name, request.Email, request.Password, request.Role, request.SalonId);
+        var entity = new Domain.Entities.User(request.Id, request.Name, request.Email, request.Password, request.Role, request.CustomerId);
         
         entity.SendCreateEvent(new UserCreatedEvent(entity));
 

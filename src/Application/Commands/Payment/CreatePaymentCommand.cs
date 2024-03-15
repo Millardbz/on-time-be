@@ -1,8 +1,8 @@
 using on_time_be.Application.Common.Interfaces;
-using on_time_be.Domain.Entities;
 using on_time_be.Domain.Enums;
 using on_time_be.Domain.Events.Payment;
-using on_time_be.Domain.Events.User;
+
+namespace on_time_be.Application.Commands.Payment;
 
 public record CreatePaymentCommand : IRequest<Guid>
 {
@@ -27,7 +27,7 @@ public class CreatePaymentCommandHandler : IRequestHandler<CreatePaymentCommand,
 
     public async Task<Guid> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
     {
-        var entity = new Payment(request.AppointmentId, request.StripePaymentIntentId, request.Amount, request.Currency, request.Status)
+        var entity = new Domain.Entities.Payment(request.AppointmentId, request.StripePaymentIntentId, request.Amount, request.Currency, request.Status)
         {
             PaymentMethod = request.PaymentMethod,
             StripeCustomerId = request.StripeCustomerId,

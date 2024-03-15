@@ -7,7 +7,7 @@ using on_time_be.Domain.Events;
 
 namespace on_time_be.Domain.Entities
 {
-    public class Salon
+    public class Customer
     {
         [Key] 
         public Guid Id { get; set; }
@@ -48,7 +48,7 @@ namespace on_time_be.Domain.Entities
         private readonly List<BaseEvent> _domainEvents = new List<BaseEvent>();
         public IReadOnlyCollection<BaseEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-        public Salon(
+        public Customer(
             Guid id,
             Guid ownerId,
             string name,

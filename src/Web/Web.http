@@ -44,13 +44,13 @@ Content-Type: application/json
 
 ###
 
-# GET Salon
-GET {{Web_HostAddress}}/api/Salon
+# GET Customer
+GET {{Web_HostAddress}}/api/Customer
 Authorization: Bearer {{BearerToken}}
 
 ###
 
-# POST Salon
+# POST Customer
 POST {{Web_HostAddress}}/api/GeneralEndpoint
 Authorization: Bearer {{BearerToken}}
 Content-Type: application/json

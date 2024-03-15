@@ -17,7 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     
     public DbSet<Service> ServiceList => Set<Service>();
     
-    public DbSet<Salon> SalonList => Set<Salon>();
+    public DbSet<Customer> CustomerList => Set<Customer>();
     
     public DbSet<Payment> PaymentList => Set<Payment>();
 
@@ -26,18 +26,18 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
         builder.Entity<User>().ToTable("User");
         builder.Entity<Appointment>().ToTable("Appointment");
         builder.Entity<Service>().ToTable("Service");
-        builder.Entity<Salon>().ToTable("Salon");
+        builder.Entity<Customer>().ToTable("Customer");
         builder.Entity<Payment>().ToTable("Payment");
 
         builder.Entity<Appointment>().Ignore(a => a.DomainEvents);
         builder.Entity<Payment>().Ignore(p => p.DomainEvents);
-        builder.Entity<Salon>().Ignore(p => p.DomainEvents);
+        builder.Entity<Customer>().Ignore(p => p.DomainEvents);
         builder.Entity<User>().Ignore(p => p.DomainEvents);
         builder.Entity<Service>().Ignore(p => p.DomainEvents);
 
-        builder.Entity<Salon>().Property(s => s.DepositValue).HasPrecision(18, 4);
-        builder.Entity<Salon>().Property(s => s.PriceWithDeposit).HasPrecision(18, 4);
-        builder.Entity<Salon>().Property(s => s.PriceWithoutDeposit).HasPrecision(18, 4);
+        builder.Entity<Customer>().Property(s => s.DepositValue).HasPrecision(18, 4);
+        builder.Entity<Customer>().Property(s => s.PriceWithDeposit).HasPrecision(18, 4);
+        builder.Entity<Customer>().Property(s => s.PriceWithoutDeposit).HasPrecision(18, 4);
         builder.Entity<Service>().Property(s => s.Price).HasPrecision(18, 4);
 
         base.OnModelCreating(builder);

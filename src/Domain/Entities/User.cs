@@ -5,11 +5,11 @@ using on_time_be.Domain.Enums; // Import the namespace where UserRole enum is lo
 
 namespace on_time_be.Domain.Entities
 {
-    public class User(Guid id, string name, string email, string password, UserRole role, Guid salonId)
+    public class User(Guid id, string name, string email, string password, UserRole role, Guid customerId)
     {
         [Key] public Guid Id { get; set; } = id;
 
-        [ForeignKey("Salon")] public Guid SalonId { get; set; } = salonId;
+        [ForeignKey("Customer")] public Guid CustomerId { get; set; } = customerId;
 
         [Required]
         [MaxLength(100)]

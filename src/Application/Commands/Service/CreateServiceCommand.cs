@@ -1,10 +1,11 @@
 using on_time_be.Application.Common.Interfaces;
-using on_time_be.Domain.Entities;
 using on_time_be.Domain.Events.Service;
+
+namespace on_time_be.Application.Commands.Service;
 
 public record CreateServiceCommand : IRequest<Guid>
 {
-    public Guid SalonId { get; init; }
+    public Guid CustomerId { get; init; }
     public string Name { get; init; } = string.Empty;
     public string? Description { get; init; }
     public TimeSpan Duration { get; init; }
@@ -22,7 +23,7 @@ public class CreateServiceCommandHandler : IRequestHandler<CreateServiceCommand,
 
     public async Task<Guid> Handle(CreateServiceCommand request, CancellationToken cancellationToken)
     {
-        var entity = new Service(request.SalonId, request.Name, request.Duration, request.Price)
+        var entity = new Domain.Entities.Service(request.CustomerId, request.Name, request.Duration, request.Price)
         {
             Description = request.Description
         };

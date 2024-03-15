@@ -5,7 +5,7 @@ public class AppointmentDto(
     string customerName,
     string customerEmail,
     string customerPhone,
-    Guid salonId,
+    Guid customerId,
     Guid serviceId,
     Guid workerId,
     DateTime startAt,
@@ -20,7 +20,7 @@ public class AppointmentDto(
     public string CustomerName { get; init; } = customerName;
     public string CustomerEmail { get; init; } = customerEmail;
     public string CustomerPhone { get; init; } = customerPhone;
-    public Guid SalonId { get; init; } = salonId;
+    public Guid CustomerId { get; init; } = customerId;
     public Guid ServiceId { get; init; } = serviceId;
     public Guid WorkerId { get; init; } = workerId;
     public DateTime StartAt { get; init; } = startAt;

@@ -9,7 +9,7 @@ public interface IApplicationDbContext
     
     DbSet<Service> ServiceList { get; }
     
-    DbSet<Salon> SalonList { get; }
+    DbSet<Customer> CustomerList { get; }
     
     DbSet<Payment> PaymentList { get; }
 

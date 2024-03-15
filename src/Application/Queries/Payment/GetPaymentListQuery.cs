@@ -35,7 +35,7 @@ public class GetPaymentListQueryHandler : IRequestHandler<GetPaymentListQuery, P
     {
         var query = _context.PaymentList.AsQueryable();
 
-        return await query.OrderBy(x => x.Created)
+        return await query.OrderBy(x => x.CreatedAt)
             .ProjectTo<PaymentDto>(_mapper.ConfigurationProvider)
             .PaginatedListAsync(request.PageNumber, request.PageSize, cancellationToken);
     }

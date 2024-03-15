@@ -8,7 +8,7 @@ namespace on_time_be.Domain.Entities
         string customerName,
         string customerEmail,
         string customerPhone,
-        Guid salonId,
+        Guid customerId,
         Guid serviceId,
         Guid workerId,
         DateTime startAt,
@@ -29,8 +29,8 @@ namespace on_time_be.Domain.Entities
         [Required]
         public string CustomerPhone { get; set; } = customerPhone;
 
-        [ForeignKey("Salon")]
-        public Guid SalonId { get; set; } = salonId;
+        [ForeignKey("Customer")]
+        public Guid CustomerId { get; set; } = customerId;
 
         [ForeignKey("Service")]
         public Guid ServiceId { get; set; } = serviceId;

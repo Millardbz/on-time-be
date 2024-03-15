@@ -2,7 +2,7 @@ namespace on_time_be.Domain.DTOs;
 
 public record ServiceDto(
     Guid Id,
-    Guid SalonId,
+    Guid CustomerId,
     string Name,
     string? Description,
     TimeSpan Duration,

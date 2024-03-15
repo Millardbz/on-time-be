@@ -33,9 +33,9 @@ namespace on_time_be.Domain.Entities
         [Required]
         public PaymentStatus Status { get; set; } = status;
 
-        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public DateTime Updated { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public string? PaymentMethod { get; set; }
 

@@ -6,12 +6,12 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/api/Salons": {
+    "/api/Customers": {
       "get": {
         "tags": [
-          "Salons"
+          "Customers"
         ],
-        "operationId": "GetSalonList",
+        "operationId": "GetCustomerList",
         "parameters": [
           {
             "name": "PageNumber",
@@ -40,7 +40,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedListOfSalonDto"
+                  "$ref": "#/components/schemas/PaginatedListOfCustomerDto"
                 }
               }
             }
@@ -49,15 +49,15 @@
       },
       "post": {
         "tags": [
-          "Salons"
+          "Customers"
         ],
-        "operationId": "CreateSalon",
+        "operationId": "CreateCustomer",
         "requestBody": {
           "x-name": "command",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSalonCommand"
+                "$ref": "#/components/schemas/CreateCustomerCommand"
               }
             }
           },
@@ -79,12 +79,12 @@
         }
       }
     },
-    "/api/Salons/{id}": {
+    "/api/Customers/{id}": {
       "get": {
         "tags": [
-          "Salons"
+          "Customers"
         ],
-        "operationId": "GetApiSalons",
+        "operationId": "GetApiCustomers",
         "parameters": [
           {
             "name": "id",
@@ -103,7 +103,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SalonDto"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               }
             }
@@ -498,14 +498,14 @@
   },
   "components": {
     "schemas": {
-      "PaginatedListOfSalonDto": {
+      "PaginatedListOfCustomerDto": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SalonDto"
+              "$ref": "#/components/schemas/CustomerDto"
             }
           },
           "pageNumber": {
@@ -528,7 +528,7 @@
           }
         }
       },
-      "SalonDto": {
+      "CustomerDto": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -598,7 +598,7 @@
           2
         ]
       },
-      "CreateSalonCommand": {
+      "CreateCustomerCommand": {
         "type": "object",
         "additionalProperties": false,
         "properties": {

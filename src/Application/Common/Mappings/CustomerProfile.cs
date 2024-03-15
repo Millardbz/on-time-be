@@ -3,12 +3,12 @@ using on_time_be.Domain.Entities;
 
 namespace on_time_be.Application.Common.Mappings;
 
-public class SalonProfile : Profile
+public class CustomerProfile : Profile
 {
-    public SalonProfile()
+    public CustomerProfile()
     {
-        CreateMap<Salon, SalonDto>();
-        CreateMap<SalonDto, Salon>()
+        CreateMap<Customer, CustomerDto>();
+        CreateMap<CustomerDto, Customer>()
             .ForMember(dest => dest.ContactInformation, opt => opt.MapFrom(src => src.ContactInformation));
     }
 }

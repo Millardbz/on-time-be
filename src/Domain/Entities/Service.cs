@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace on_time_be.Domain.Entities
 {
-    public class Service(Guid salonId, string name, TimeSpan duration, decimal price)
+    public class Service(Guid customerId, string name, TimeSpan duration, decimal price)
     {
         [Key]
         public Guid Id { get; set; }
 
-        [ForeignKey("Salon")]
-        public Guid SalonId { get; set; } = salonId;
+        [ForeignKey("Customer")]
+        public Guid CustomerId { get; set; } = customerId;
 
         [Required]
         [MaxLength(100)]

@@ -28,7 +28,7 @@ public class MappingTests
     }
 
     [Test]
-    [TestCase(typeof(Salon), typeof(SalonDto))]
+    [TestCase(typeof(Customer), typeof(CustomerDto))]
     [TestCase(typeof(User), typeof(UserDto))]
     [TestCase(typeof(Appointment), typeof(AppointmentDto))]
     [TestCase(typeof(Service), typeof(ServiceDto))]

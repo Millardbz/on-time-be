@@ -1,6 +1,6 @@
 namespace on_time_be.Domain.DTOs
 {
-    public class SalonDto
+    public class CustomerDto
     {
         public Guid Id { get; set; }
         public Guid OwnerId { get; set; }
@@ -22,12 +22,12 @@ namespace on_time_be.Domain.DTOs
         public DateTime UpdatedAt { get; set; }
 
         // Add a parameterless constructor
-        public SalonDto()
+        public CustomerDto()
         {
         }
 
         // Existing constructor that takes all the required parameters
-        public SalonDto(Guid id, Guid ownerId, string name, string description, string location, string contactInformation, string openingHours, DepositType depositType, decimal depositValue, decimal priceWithDeposit, decimal priceWithoutDeposit, DateTime createdAt, DateTime updatedAt)
+        public CustomerDto(Guid id, Guid ownerId, string name, string description, string location, string contactInformation, string openingHours, DepositType depositType, decimal depositValue, decimal priceWithDeposit, decimal priceWithoutDeposit, DateTime createdAt, DateTime updatedAt)
         {
             Id = id;
             OwnerId = ownerId;

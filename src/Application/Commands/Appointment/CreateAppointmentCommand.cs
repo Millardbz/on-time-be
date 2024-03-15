@@ -1,14 +1,15 @@
 using on_time_be.Application.Common.Interfaces;
-using on_time_be.Domain.Entities;
 using on_time_be.Domain.Enums;
 using on_time_be.Domain.Events.Appointment;
+
+namespace on_time_be.Application.Commands.Appointment;
 
 public record CreateAppointmentCommand : IRequest<Guid>
 {
     public string CustomerName { get; init; } = string.Empty;
     public string CustomerEmail { get; init; } = string.Empty;
     public string CustomerPhone { get; init; } = string.Empty;
-    public Guid SalonId { get; init; }
+    public Guid CustomerId { get; init; }
     public Guid ServiceId { get; init; }
     public Guid WorkerId { get; init; }
     public DateTime StartAt { get; init; }
@@ -29,7 +30,7 @@ public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointment
 
     public async Task<Guid> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
     {
-        var entity = new Appointment(request.CustomerName, request.CustomerEmail, request.CustomerPhone, request.SalonId, request.ServiceId, request.WorkerId, request.StartAt, request.EndAt, request.Status)
+        var entity = new Domain.Entities.Appointment(request.CustomerName, request.CustomerEmail, request.CustomerPhone, request.CustomerId, request.ServiceId, request.WorkerId, request.StartAt, request.EndAt, request.Status)
         {
             Comments = request.Comments,
             ReminderSent = request.ReminderSent,
